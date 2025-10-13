@@ -36,7 +36,7 @@ func TestAdd(t *testing.T) {
 		err := dictionary.Add(word, "new test")
 
 		assertError(t, err, ErrWordExists)
-		assertDefinition(t, dictionary, word, definition) // Should keep the original definition
+		assertDefinition(t, dictionary, word, definition)
 	})
 }
 
@@ -74,11 +74,7 @@ func TestDelete(t *testing.T) {
 	assertError(t, err, ErrNotFound)
 }
 
-// Helper functions
-
 func assertStrings(t testing.TB, got, want string) {
-	// t.Helper() is needed so that in case of failure,
-	// the line number reported is the one where the test was called, not inside the helper function.
 	t.Helper()
 	if got != want {
 		t.Errorf("got %q want %q", got, want)
